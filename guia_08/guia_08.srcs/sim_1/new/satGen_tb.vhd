@@ -2,25 +2,25 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
-entity sat16a8_tb is
---  Port ( );
-end sat16a8_tb;
+entity satGen_tb is
+    generic (M: integer := 16;
+             N: integer := 8);
+end satGen_tb;
 
-architecture Behavioral of sat16a8_tb is
-    component sat16a8 is
-    Port ( entrada : in std_logic_vector (15 downto 0);
-           salida : out std_logic_vector (7 downto 0));
+architecture Behavioral of satGen_tb is
+    component satGen is
+    generic (M: integer := 16;
+             N: integer := 8);
+    Port ( entrada : in std_logic_vector (M-1 downto 0);
+           salida : out std_logic_vector (N-1 downto 0));
     end component;
     
-    signal a : std_logic_vector (15 downto 0);
-    signal b : std_logic_vector (7 downto 0);
+    signal a : std_logic_vector (M-1 downto 0);
+    signal b : std_logic_vector (N-1 downto 0);
     
 begin
 
-uut: sat16a8 PORT MAP (
-      entrada => a,          
-      salida => b      
-    );
+uut: satGen generic map (M => M, N => N) port map (entrada => a, salida => b);
 
 stim_proc: process
 begin
@@ -40,8 +40,6 @@ begin
 	a <= X"0081"; wait for 100 ns;   -- 129
 	a <= X"7FFF"; wait for 100 ns;   -- 32767
 	
-	
-    
     wait;
 end process;
 

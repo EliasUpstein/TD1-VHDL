@@ -34,16 +34,12 @@ end comparadorCa2;
 architecture Behavioral of comparadorCa2 is
 
 signal cmp : std_logic_vector(2 downto 0);
-signal a_s: std_logic_vector(N-1 downto 0);
-signal b_s : std_logic_vector(N-1 downto 0);
 
 begin
 
-    a_s <= std_logic_vector(signed (a));
-    b_s <= std_logic_vector(signed (b));
-    cmp <= "010" when (a_s = b_s) else 
-     "100" when (a_s > b_s) else
-     "001";
+    cmp <= "100" when (signed (a) > signed (b)) else 
+     "001" when (signed (a) < signed (b)) else
+     "010";
     aMayorQueB<= cmp(2);
     aIgualB <= cmp(1);
     aMenorQueB <= cmp(0);

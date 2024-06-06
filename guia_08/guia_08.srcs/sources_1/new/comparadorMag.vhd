@@ -35,16 +35,11 @@ end comparadorMag;
 architecture Behavioral of comparadorMag is
 
 signal cmp : std_logic_vector(2 downto 0);
-signal a_s: std_logic_vector(N-1 downto 0);
-signal b_s : std_logic_vector(N-1 downto 0);
 
 begin
-
-    a_s <= std_logic_vector(unsigned (a));
-    b_s <= std_logic_vector(unsigned (b));
-    cmp <= "010" when (a_s = b_s) else 
-     "100" when (a_s > b_s) else
-     "001";
+    cmp <= "100" when (unsigned (a) > unsigned (b)) else 
+     "001" when (unsigned (a) < unsigned (b)) else
+     "010";
     aMayorQueB<= cmp(2);
     aIgualB <= cmp(1);
     aMenorQueB <= cmp(0);
