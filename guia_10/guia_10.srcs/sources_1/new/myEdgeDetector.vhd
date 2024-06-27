@@ -13,19 +13,27 @@ end myEdgeDetector;
 architecture Behavioral of myEdgeDetector is
 
 signal d_S : std_logic := '0';
+signal d_S_2 : std_logic := '0';
 
 begin
 
 process (clk)
 begin
 
-    if (rising_edge(clk)) then
+    if (falling_edge(clk)) then
         d_s <= d;
+        d_s_2 <= d_s;
+        
     end if;
 
 end process;
 
-ascendente <= '1' when (((d xor d_s) and d) = '1') else '0';
-descendente <= '1' when (((d xor d_s) and d_s) = '1') else '0';
+-- Otra forma
+--ascendente <= '1' when (((d_S xor d_s_2) and d_S) = '1') else '0';
+--descendente <= '1' when (((d_S xor d_s_2) and d_s_2) = '1') else '0';
+
+descendente <= '1' when ((not(d_s)and d_s_2)='1') else '0';
+ascendente <= '1' when ((not(d_s_2)and d_s)='1') else '0';
+
 
 end Behavioral;
