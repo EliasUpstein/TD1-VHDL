@@ -43,14 +43,15 @@ end process;
 -- Reset process --
 resetProc :process
 begin      
-    rst <= '1';     wait for 50 ns;
+    rst <= '1';     wait for 200 ns;
     rst <= '0';     wait;
 end process;
 
 -- Stimulus process --
 stimProc :process
 begin      
-    d <= '0';
+    d <= '1';  wait for 50 ns;
+    d <= '0';  wait for 100 ns;
     wait until falling_edge (rst); 
     d <= '0';     wait for 100 ns;
     d <= '1';     wait for 100 ns;

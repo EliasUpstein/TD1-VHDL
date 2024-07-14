@@ -21,9 +21,13 @@ process (clk)
 begin
 
     if (falling_edge(clk)) then
+        if (rst='1') then
+        d_s <= '0';
+        d_s_2 <= '0';   
+        else
         d_s <= d;
         d_s_2 <= d_s;
-        
+        end if;
     end if;
 
 end process;
