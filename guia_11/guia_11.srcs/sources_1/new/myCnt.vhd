@@ -21,6 +21,29 @@ signal cnt_S : unsigned (N - 1 downto 0);
 
 begin
 
+--    process (clk)
+--    begin
+--        if (rising_edge (clk)) then
+--            if (rst = '1') then
+--                cnt_S <= (others => '0');
+--            elsif (ena = '1') then
+--                cnt_S <= cnt_S + 1;
+--                if(cnt_S = M_2) then
+--                    salidaM_2 <= '1';
+--                elsif (cnt_S = M) then
+--                    salidaM_2 <= '1';
+--                    salidaM <= '1';
+--                    cnt_S <= (others => '0');
+--                else
+--                    salidaM_2 <= '0';
+--                    salidaM <= '0';
+--                end if;
+--            end if;
+--        end if;
+--    end process;
+
+
+
     process (clk)
     begin
         if (rising_edge (clk)) then
@@ -28,11 +51,14 @@ begin
                 cnt_S <= (others => '0');
             elsif (ena = '1') then
                 cnt_S <= cnt_S + 1;
+                if(cnt_S = M) then
+                    cnt_S <= (others => '0');
+                end if;
             end if;
         end if;
     end process;
     
-salidaM_2 <= '1' when cnt_S = M_2 else '0';
+salidaM_2 <= '1' when (cnt_S = M_2) or (cnt_S = M) else '0';
 salidaM <= '1' when cnt_S = M else '0';
 
 end Behavioral;

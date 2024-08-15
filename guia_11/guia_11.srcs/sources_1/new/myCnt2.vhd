@@ -24,7 +24,7 @@ begin
                 cnt_S <= (others => '0');
                 salida <= '0';
             elsif (ena = '1') then
-                if(cnt_S = unsigned(p)) then
+                if(cnt_S = (unsigned(p)-1)) then        --Resto uno porque cuenta desde 0 (0 a 6)
                      cnt_S <= (others => '0');
                      salida <= '1';
                 else
