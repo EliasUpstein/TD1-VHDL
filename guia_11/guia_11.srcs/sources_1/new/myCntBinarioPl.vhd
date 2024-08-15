@@ -18,16 +18,20 @@ signal cnt_S : unsigned (N - 1 downto 0);
 
 begin
 
-process (clk)
- begin
-    if (rising_edge (clk)) then
-        if (rst = '1') then
-            cnt_S <= (others => '0');
-        elsif (ena = '1') then 
-            cnt_S <= cnt_S + 1;
-    end if;            
-end if;
-end process;
+    process (clk)
+     begin
+        if (rising_edge (clk)) then
+            if (rst = '1') then
+                cnt_S <= (others => '0');
+            elsif (ena = '1') then 
+                if(dl = '1') then
+                    cnt_S <= unsigned(d);
+                else
+                    cnt_S <= cnt_S + 1;
+                end if;
+            end if;            
+        end if;
+    end process;
 
 q <= std_logic_vector (cnt_s);
 
