@@ -13,6 +13,7 @@ end detectorSecuencia;
 architecture Behavioral of detectorSecuencia is
 
 signal aux: std_logic_vector (23 downto 0) := (others => '0');
+signal salida_S: std_logic := '0';
 
 begin
     process (clk)
@@ -20,7 +21,7 @@ begin
         if (rising_edge (clk)) then
             if(rst = '1') then
                 aux <= (others => '0');
-            elsif(ena = '1') then
+            elsif(ena = '1' or salida_S = '1') then --Comparo salida para que solo dure 1 clock
                 aux(7 downto 0) <= d;
                 aux(15 downto 8) <= aux(7 downto 0);
                 aux(23 downto 16) <= aux(15 downto 8);
@@ -28,6 +29,7 @@ begin
         end if;
     end process;
 
-salida <= '1' when (aux = sec) else '0';
+salida_S <= '1' when (aux = sec) else '0';
+salida <= salida_S;
 
 end Behavioral;
