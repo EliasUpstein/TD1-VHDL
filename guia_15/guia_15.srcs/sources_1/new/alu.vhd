@@ -37,6 +37,9 @@ signal acc_q: std_logic_vector (DATA_BITS-1 downto 0) := (others => '0');
 signal acc_d: std_logic_vector (DATA_BITS-1 downto 0) := (others => '0');
 signal carryBorrow_q: std_logic := '0';
 signal carryBorrow_d: std_logic := '0';
+
+signal carryOut: std_logic := '0';
+
 signal sat_q: std_logic := '0';
 signal sat_d: std_logic := '0';
 
@@ -49,7 +52,7 @@ Generic map(DATA_BITS => DATA_BITS)
 Port map(a => acc_q,
          b => op,
          carryIn => carryBorrow_q,
-         carryOut => carryBorrow_d,
+         carryOut => carryOut,
          res => acc_d,
          sat => sat_q,
          code => code,
@@ -61,6 +64,9 @@ process (clk)
     begin
         if (rising_edge (clk)) then
             if (rst = '1') then
+                acc_q <= (others => '0');
+                carryBorrow_q <= '0';
+                sat_q <= '0';
             elsif (ena = '1') then
                 acc_q <= acc_d;
                 carryBorrow_q <= carryBorrow_d;
@@ -69,17 +75,20 @@ process (clk)
         end if;
 end process;     
 
-aux_S <= acc_q(DATA_BITS - TO_INTEGER(unsigned(op))) when TO_INTEGER(unsigned(op)) > 0 else
-         acc_q(-1 - TO_INTEGER(unsigned(op))) when TO_INTEGER(unsigned(op)) < 0 else
-         carryBorrow_d;
+aux_S <= acc_q(DATA_BITS - TO_INTEGER(signed(op))) when ((TO_INTEGER(signed(op)) > 0) and (TO_INTEGER(signed(op)) < 16)) else
+         acc_q(-1 - TO_INTEGER(signed(op))) when ((TO_INTEGER(signed(op)) < 0) and (TO_INTEGER(signed(op)) > -16)) else
+         carryOut;
 
 with to_integer(unsigned(code)) select
     carryBorrow_d <= aux_S when 5,          -- (Carry, ACC) = (Carry, ACC) << op || (Carry, ACC) = (Carry, ACC) >> op
                      op(0) when 7,          -- carrySet = op
-                     '0'   when others;
-
-sat_d <= op(0) when (TO_INTEGER(unsigned(code)) = 8) else  '0'; -- satSet = op
+                     carryOut when 3,
+                     carryOut when 4,
+                     carryBorrow_q when others;
 
 acc <= acc_q;
+carryBorrow <= carryBorrow_q;
+
+sat_d <= op(0) when (TO_INTEGER(unsigned(code)) = 8) else sat_q;
 
 end Behavioral;

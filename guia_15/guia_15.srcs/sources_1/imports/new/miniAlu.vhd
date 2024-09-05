@@ -19,20 +19,20 @@ end miniAlu;
 
 architecture Behavioral of miniAlu is
 
-constant CTE : std_logic_vector(DATA_BITS-1 downto 0) := (others => '0');
+constant CTE_0: std_logic_vector(DATA_BITS-1 downto 0) := (others => '0');
 
-signal aSuma_S : signed (DATA_BITS+1 downto 0);
-signal aResta_S : signed (DATA_BITS+1 downto 0);
-signal bSuma_S : signed (DATA_BITS+1 downto 0);
-signal bResta_S : signed (DATA_BITS+1 downto 0);
-signal ResAnd : std_logic_vector (DATA_BITS-1 downto 0);
-signal ResOr : std_logic_vector (DATA_BITS-1 downto 0);
-signal ResXor : std_logic_vector (DATA_BITS-1 downto 0);
-signal ResSuma : std_logic_vector (DATA_BITS+1 downto 0);
-signal ResResta : std_logic_vector (DATA_BITS+1 downto 0);
-signal Resultado : std_logic_vector (DATA_BITS-1 downto 0);
-signal rOv_s, sOv_s, ov_S :  std_logic;
-signal aux : std_logic_vector (DATA_BITS-1 downto 0);
+signal aSuma_S : signed (DATA_BITS+1 downto 0) := (others => '0');
+signal aResta_S : signed (DATA_BITS+1 downto 0) := (others => '0');
+signal bSuma_S : signed (DATA_BITS+1 downto 0) := (others => '0');
+signal bResta_S : signed (DATA_BITS+1 downto 0) := (others => '0');
+signal ResAnd : std_logic_vector (DATA_BITS-1 downto 0) := (others => '0');
+signal ResOr : std_logic_vector (DATA_BITS-1 downto 0) := (others => '0');
+signal ResXor : std_logic_vector (DATA_BITS-1 downto 0) := (others => '0');
+signal ResSuma : std_logic_vector (DATA_BITS+1 downto 0) := (others => '0');
+signal ResResta : std_logic_vector (DATA_BITS+1 downto 0) := (others => '0');
+signal Resultado : std_logic_vector (DATA_BITS-1 downto 0) := (others => '0');
+signal rOv_s, sOv_s, ov_S :  std_logic := '0';
+signal aux : std_logic_vector (DATA_BITS-1 downto 0) := (others => '0');
 signal pos_S : std_logic_vector(DATA_BITS-1 downto 0):= ('0',others=>'1');
 signal neg_S : std_logic_vector(DATA_BITS-1 downto 0):= ('1',others=>'0');
 
@@ -67,7 +67,7 @@ aux <= pos_S when ((sat = '1') and (ov_S = '1') and (a(DATA_BITS-1) = '0')) else
        neg_S when ((sat = '1') and (ov_S = '1') and (a(DATA_BITS-1) = '1')) else
        ResSuma(DATA_BITS downto 1) when (((sat = '0') or (ov_S = '0')) and (code = "0011")) else
        ResResta(DATA_BITS downto 1) when (((sat = '0') or (ov_S = '0')) and (code = "0100")) else
-       CTE;
+       CTE_0;
 
 --And, Or y Xor
 ResAnd <= a and b;
@@ -82,16 +82,16 @@ with to_integer(unsigned(code)) select
                  aux when 3,
                  aux when 4,
                  --
-                 aux when 5,
+                 a when 5,
                  b when 6,          -- ACC = op 
-                 aux when 7,
+                 aux when 7,        -- carry = op(0)
                  aux when 8,        -- satSet = op
-                 a when others;
+                 a when others;     -- No realiza acción    
 
 res <= resultado;
 
 --Cálculo de zero y negative
-zero <= '1' when (resultado = CTE) else '0';
+zero <= '1' when (resultado = CTE_0) else '0';
 negative <= resultado(DATA_BITS-1);
     
 end Behavioral;
