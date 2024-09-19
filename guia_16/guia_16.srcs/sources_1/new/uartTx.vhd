@@ -38,7 +38,7 @@ end component;
 --Contadores
 --Cantidad de bits para representar dataSize (para que sea genérico)
 --Suma dos para considerar el bit de start y stop
-constant N_COUNT : integer := integer(ceil(log2(real(dataSize+2))));
+constant N_COUNT : integer := integer(ceil(log2(real((dataSize-1)+2))));
 
 signal cuentaBin_S : std_logic_vector (N_COUNT - 1 downto 0) := (others => '0');
 signal cuentaBaud_S : std_logic := '0';
@@ -71,7 +71,7 @@ begin
     end if;
 end process;
 
-logicaSalida: process (state)
+logicaSalida: process (state, cuentaBin_S)
 begin
     case (state) is
         when idle=>
@@ -85,14 +85,14 @@ begin
             enaCounts_S <= '1';         --Habilita los contadores
             rstCounts_S <= '0';
         when dataBits =>
-            tx <= dataTx(to_integer(unsigned(cuentaBin_S))-1);  --Resta uno por el desplazamiento del start                  
+            tx <= dataTx(to_integer(unsigned(cuentaBin_S))-1);  --Resta uno por el desplazamiento del start     
             ready <= '0';
             enaCounts_S <= '1';         
             rstCounts_S <= '0';
         when bitStop =>
             tx <= '1';                  
             ready <= '0';
-            enaCounts_S <= '0';         --Deshabilita los contadores
+            enaCounts_S <= '1';
             rstCounts_S <= '0';         
         when endOfTransmision =>
             tx <= '1';                  
@@ -107,7 +107,7 @@ begin
     end case;
 end process;
 
-logicaEstadoFuturo: process (state, dataWr, cuentaBin_S)
+logicaEstadoFuturo: process (state, dataWr, cuentaBin_S, cuentaBaud_S)
 begin
     next_state <= state;
     case (state) is
@@ -120,11 +120,11 @@ begin
                 next_state <= dataBits;
             end if;
         when dataBits =>
-            if (to_integer(unsigned(cuentaBin_S)) > (dataSize + 1)) then
+            if ((to_integer(unsigned(cuentaBin_S)) >= ((dataSize-1) + 1)) and (cuentaBaud_S = '1')) then
                 next_state <= bitStop;
             end if;
         when bitStop =>
-            if (to_integer(unsigned(cuentaBin_S)) > (dataSize + 2)) then
+            if ((to_integer(unsigned(cuentaBin_S)) >= ((dataSize-1) + 2)) and (cuentaBaud_S = '1')) then
                 next_state <= endOfTransmision;
             end if;
         when endOfTransmision =>

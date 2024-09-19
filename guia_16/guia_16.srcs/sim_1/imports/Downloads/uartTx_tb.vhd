@@ -94,8 +94,9 @@ BEGIN
         dataTx<=x"aa";
         wait for clk_period*5;
         dataWr<='0';
-        dataTx<=x"00";                
         wait until falling_edge(ready);
+        dataTx<=x"00";                
+
 
         -- transmito 0x00 0 0000 0000 1
         wait for clk_period*5;
@@ -104,8 +105,9 @@ BEGIN
         dataTx<=x"00";
         wait for clk_period*5;
         dataWr<='0';
-        dataTx<=x"00";                
         wait until falling_edge(ready);
+        dataTx<=x"00";                
+
 
         -- transmito 0xFF 0 1111 1111 1
         wait for clk_period*5;
@@ -114,8 +116,9 @@ BEGIN
         dataTx<=x"FF";
         wait for clk_period*5;
         dataWr<='0';
-        dataTx<=x"00";                
         wait until falling_edge(ready);
+        dataTx<=x"00";                
+
 
         -- transmito 0x55 0 0101 0101 1
         wait for clk_period*5;
@@ -124,8 +127,8 @@ BEGIN
         dataTx<=x"55";
         wait for clk_period*5;
         dataWr<='0';
-        dataTx<=x"00";                
         wait until falling_edge(ready);
+        dataTx<=x"00";                
         signal_salida<= Fin;
 
         wait;
