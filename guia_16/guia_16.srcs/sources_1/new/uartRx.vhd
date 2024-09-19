@@ -3,19 +3,18 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use IEEE.math_real.all;
 
-entity uartTx is
+entity uartRx is
 Generic (baudRate : integer := 9600;
            sysClk : integer := 100000000;
          dataSize : integer := 8);
 Port ( clk : in std_logic;
        rst : in std_logic;
-    dataWr : in std_logic;
-    dataTx : in std_logic_vector (dataSize- 1 downto 0);
-     ready : out std_logic;
-        tx : out std_logic);
-end uartTx;
+    dataRd : out std_logic;
+    dataRx : out std_logic_vector (dataSize- 1 downto 0);
+        rx : in std_logic);
+end uartRx;
 
-architecture Behavioral of uartTx is
+architecture Behavioral of uartRx is
 
 --Componentes
 component myCnt is
@@ -41,17 +40,16 @@ end component;
 constant N_COUNT : integer := integer(ceil(log2(real((dataSize-1)+2))));
 
 signal cuentaBin_S : std_logic_vector (N_COUNT - 1 downto 0) := (others => '0');
-signal cuentaBaud_S : std_logic := '0';
+signal cuentaBaud_S, cuentaBaud_2 : std_logic := '0';
 signal rstCounts_S : std_logic := '0';
 signal enaCounts_S : std_logic := '0';
 
 --Máquina de estados
-type state_type is (idle, bitStart, dataBits, bitStop, endOfTransmision);
+type state_type is (idle, bitStart, dataBits, bitStop, endOfRecepction);
 signal state, next_state : state_type;
 
-signal dataTxQ_S : std_logic_vector (dataSize- 1 downto 0) := (others => '0'); --Para no perder el valor mientras transmite
-signal dataTxD_S : std_logic_vector (dataSize- 1 downto 0) := (others => '0');
-
+signal dataRxQ_S : std_logic_vector (dataSize- 1 downto 0) := (others => '0');
+signal dataRxD_S : std_logic_vector (dataSize- 1 downto 0) := (others => '0');
 
 begin
 
@@ -62,68 +60,67 @@ Port map(clk => clk, rst => rstCounts_S, ena => cuentaBaud_S, q => cuentaBin_S);
 
 cntData: myCnt
 Generic map(M => sysClk/baudRate)
-Port map(clk => clk, rst => rstCounts_S, ena => enaCounts_S, salidaM => cuentaBaud_S, salidaM_2 => open);
+Port map(clk => clk, rst => rstCounts_S, ena => enaCounts_S, salidaM => cuentaBaud_S, salidaM_2 => cuentaBaud_2);
 
 estadoProc: process (clk)
 begin
     if (rising_edge (clk)) then
         if (rst = '1') then
-            state <= endOfTransmision;  --Para resetear los contadores y avisar que está listo
+            state <= endOfRecepction;  --Para resetear los contadores y avisar que está listo
         else
             state <= next_state;
-            dataTxQ_S <= dataTxD_S;
+            dataRxQ_S <= dataRxD_S;
         end if;
     end if;
 end process;
 
-logicaSalida: process (state, cuentaBin_S, dataTxQ_S, dataTx)
+dataRx <= dataRxQ_S;
+
+logicaSalida: process (state, cuentaBin_S, dataRxQ_S, rx,cuentaBaud_2, cuentaBaud_S)
 begin
     case (state) is
         when idle=>
-            dataTxD_S <= dataTx;        --Guarda/Holdea el dato
-            tx <= '1';                  --Consigna
-            ready <= '0';
+            dataRxD_S <= dataRxQ_S;
+            dataRd <= '0';
             enaCounts_S <= '0';         --Deshabilita los contadores
             rstCounts_S <= '0';
         when bitStart =>
-            dataTxD_S <= dataTxQ_S;
-            tx <= '0';                  --Consigna
-            ready <= '0';
+            dataRxD_S <= dataRxQ_S;
+            dataRd <= '0';
             enaCounts_S <= '1';         --Habilita los contadores
             rstCounts_S <= '0';
-        when dataBits =>
-            dataTxD_S <= dataTxQ_S;
-            tx <= dataTxQ_S(to_integer(unsigned(cuentaBin_S))-1);  --Resta uno por el desplazamiento del start     
-            ready <= '0';
+        when dataBits =>        
+            dataRxD_S <= dataRxQ_S;          
+            if (cuentaBaud_2 ='1' and cuentaBaud_S = '0') then  --Toma el valor a la mitad del tiempo. Compara con el otro para no leer 2 veces
+                dataRxD_S(to_integer(unsigned(cuentaBin_S))-1) <= rx;  --Resta uno por el desplazamiento del start
+            end if;
+            dataRd <= '0';
             enaCounts_S <= '1';         
             rstCounts_S <= '0';
         when bitStop =>
-            dataTxD_S <= dataTxQ_S;
-            tx <= '1';                  
-            ready <= '0';
+            dataRxD_S <= dataRxQ_S;
+            dataRd <= '0';
             enaCounts_S <= '1';
             rstCounts_S <= '0';         
-        when endOfTransmision =>
-            dataTxD_S <= dataTxQ_S;
-            tx <= '1';                  
-            ready <= '1';
+        when endOfRecepction =>
+            dataRxD_S <= dataRxQ_S;
+            dataRd <= '1';
             enaCounts_S <= '0';         --Deshabilita los contadores
             rstCounts_S <= '1';         --Resetea los contadores
         when others =>
-            dataTxD_S <= dataTxQ_S;
-            tx <= '1';   
-            ready <= '0';
+            dataRxD_S <= (others => '0');  --Resetea la salida en caso de error
+            dataRd <= '0';
             enaCounts_S <= '0';
             rstCounts_S <= '0';
     end case;
 end process;
 
-logicaEstadoFuturo: process (state, dataWr, cuentaBin_S, cuentaBaud_S)
+logicaEstadoFuturo: process (state, rx, cuentaBin_S, cuentaBaud_S)
 begin
     next_state <= state;
     case (state) is
         when idle =>
-            if (dataWr = '1') then
+            if (rx = '0') then
                 next_state <= bitStart;
             end if;
         when bitStart =>
@@ -136,9 +133,9 @@ begin
             end if;
         when bitStop =>
             if ((to_integer(unsigned(cuentaBin_S)) >= ((dataSize-1) + 2)) and (cuentaBaud_S = '1')) then
-                next_state <= endOfTransmision;
+                next_state <= endOfRecepction;
             end if;
-        when endOfTransmision =>
+        when endOfRecepction =>
             next_state <= idle;
         when others =>
             next_state <= idle;

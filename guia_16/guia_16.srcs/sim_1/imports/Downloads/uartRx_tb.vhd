@@ -30,7 +30,7 @@ ARCHITECTURE behavior OF myUartRx_tb IS
            rx : in  STD_LOGIC );
     END COMPONENT;
     
-    COMPONENT UartTx_sec
+    COMPONENT UartTx
     GENERIC( baudRate : integer;
              sysClk : integer;
              dataSize : integer );
@@ -65,7 +65,7 @@ ARCHITECTURE behavior OF myUartRx_tb IS
 BEGIN
 
    -- Instantiate the Source Test (ST)
-   st: UartTx_sec
+   st: UartTx
    GENERIC MAP ( baudRate => 1250000,  -- tiempo bit = 40*Tclk
 			     sysClk => 50000000,   -- Tclk = 20ns
                  dataSize => 8 )
