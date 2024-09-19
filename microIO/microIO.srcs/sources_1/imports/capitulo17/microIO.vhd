@@ -31,7 +31,6 @@ architecture Behavioral of microIO is
     signal pcPlAddr : std_logic_vector (15 downto 0);
     signal pcData: std_logic_vector (31 downto 0);
 
-
     component portIO is
     Generic (DATA_BITS    : integer := 16 );
     Port ( clk : in std_logic;
@@ -41,7 +40,6 @@ architecture Behavioral of microIO is
            portWrEna : in std_logic;
            portWr : out std_logic_vector (DATA_BITS - 1 downto 0);
            portWrReg : in std_logic_vector (DATA_BITS - 1 downto 0));
-
     end component;
                   
     signal portWrEna : std_logic;              
