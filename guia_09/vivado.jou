@@ -1,0 +1,15 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Thu Aug 15 10:57:04 2024
+# Process ID: 14772
+# Current directory: C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_09
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent8428 C:\Users\elias\Desktop\Tecnicas Digitales I\eupstein\guia_09\guia_09.xpr
+# Log file: C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_09/vivado.log
+# Journal file: C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_09\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_09/guia_09.xpr}
+update_compile_order -fileset sources_1
+close_project

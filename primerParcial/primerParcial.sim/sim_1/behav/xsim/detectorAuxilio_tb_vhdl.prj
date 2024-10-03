@@ -1,0 +1,9 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../primerParcial.srcs/sources_1/new/detectorAuxilio.vhd" \
+"../../../../primerParcial.srcs/sources_1/imports/new/detectorSecuencia.vhd" \
+"../../../../primerParcial.srcs/sources_1/imports/new/myEdgeDetector.vhd" \
+"../../../../primerParcial.srcs/sim_1/new/detectorAuxilio_tb.vhd" \
+
+# Do not sort compile order
+nosort

@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Thu Aug 29 11:39:41 2024
+# Process ID: 2560
+# Current directory: C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/primerParcial/primerParcial.runs/synth_1
+# Command line: vivado.exe -log companding_A.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source companding_A.tcl
+# Log file: C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/primerParcial/primerParcial.runs/synth_1/companding_A.vds
+# Journal file: C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/primerParcial/primerParcial.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source companding_A.tcl -notrace

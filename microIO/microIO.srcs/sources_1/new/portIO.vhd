@@ -15,7 +15,27 @@ end portIO;
 
 architecture Behavioral of portIO is
 
+signal portWr_S : std_logic_vector(DATA_BITS - 1 downto 0) := (others => '0');
+
 begin
 
+    process (clk)
+     begin
+        if (rising_edge (clk)) then
+            if (rst = '1') then
+                portWr_S <= (others => '0');
+                portRdReg <= (others => '0');
+            else
+                portRdReg <= portRd;
+                if (portWrEna = '1') then 
+                    portWr_S <= portWrReg;
+                else
+                    portWr_S <= portWr_S;
+                end if;
+            end if;           
+        end if;
+    end process;
+
+portWr <= portWr_S;
 
 end Behavioral;

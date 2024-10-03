@@ -1,0 +1,152 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Thu Aug  8 14:46:14 2024
+# Process ID: 5500
+# Current directory: C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_10
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6784 C:\Users\elias\Desktop\Tecnicas Digitales I\eupstein\guia_10\guia_10.xpr
+# Log file: C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_10/vivado.log
+# Journal file: C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_10\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_10/guia_10.xpr}
+update_compile_order -fileset sources_1
+launch_simulation
+source myEdgeDetector_tb.tcl
+close_sim
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top detectorSecuencia_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top detectorSecuencia [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+launch_simulation
+source detectorSecuencia_tb.tcl
+relaunch_sim
+close_sim
+close [ open {C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_10/guia_10.srcs/sources_1/new/generadorSecuencia.vhd} w ]
+add_files {{C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_10/guia_10.srcs/sources_1/new/generadorSecuencia.vhd}}
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top generadorSecuencia [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top generadorSecuencia_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top detectorSecuencia_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top detectorSecuencia [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+launch_simulation
+source detectorSecuencia_tb.tcl
+relaunch_sim
+relaunch_sim
+relaunch_sim
+close_sim
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top generadorSecuencia [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top generadorSecuencia_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+launch_simulation
+source generadorSecuencia_tb.tcl
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+close_sim
+close_project
+create_project guia_11 {C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_11} -part xc7z010clg400-1
+set_property target_language VHDL [current_project]
+set_property simulator_language VHDL [current_project]
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+import_files -fileset sim_1 -norecurse {{C:/Users/elias/Desktop/Tecnicas Digitales I/material/material/guia/capitulo11/myCnt2_tb.vhd} {C:/Users/elias/Desktop/Tecnicas Digitales I/material/material/guia/capitulo11/myCnt_tb.vhd} {C:/Users/elias/Desktop/Tecnicas Digitales I/material/material/guia/capitulo11/myCntBiDir_tb.vhd} {C:/Users/elias/Desktop/Tecnicas Digitales I/material/material/guia/capitulo11/myCntBinarioPl_tb.vhd} {C:/Users/elias/Desktop/Tecnicas Digitales I/material/material/guia/capitulo11/myCntBinarioSimple_tb.vhd}}
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+file mkdir C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_11/guia_11.srcs/sources_1/new
+file mkdir C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_11/guia_11.srcs/sources_1/new
+file mkdir C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_11/guia_11.srcs/sources_1/new
+file mkdir C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_11/guia_11.srcs/sources_1/new
+file mkdir C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_11/guia_11.srcs/sources_1/new
+file mkdir C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_11/guia_11.srcs/sources_1/new
+file mkdir {C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_11/guia_11.srcs/sources_1/new}
+close [ open {C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_11/guia_11.srcs/sources_1/new/myCntBinarioPl.vhd} w ]
+add_files {{C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_11/guia_11.srcs/sources_1/new/myCntBinarioPl.vhd}}
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top myCntBinarioPl_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+close [ open {C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_11/guia_11.srcs/sources_1/new/myCntBiDir.vhd} w ]
+add_files {{C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_11/guia_11.srcs/sources_1/new/myCntBiDir.vhd}}
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top myCntBiDir_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top myCntBiDir [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+launch_simulation
+source myCntBiDir_tb.tcl
+close_sim
+close [ open {C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_11/guia_11.srcs/sources_1/new/myCnt.vhd} w ]
+add_files {{C:/Users/elias/Desktop/Tecnicas Digitales I/eupstein/guia_11/guia_11.srcs/sources_1/new/myCnt.vhd}}
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top myCnt [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top myCnt_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
