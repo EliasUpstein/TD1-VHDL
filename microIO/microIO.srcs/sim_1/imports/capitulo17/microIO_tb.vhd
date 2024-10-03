@@ -77,6 +77,12 @@ begin
     wait for 50 ns;  -- Ajustar deacuerdo al COE
     wait until rising_edge (clk);
     portRd <= X"7F00";
+    wait until rising_edge (clk);
+    portRd <= X"0001";
+    wait until rising_edge (clk);
+    portRd <= X"0010";
+    wait until rising_edge (clk);
+    portRd <= X"0011";
     wait;    
 end process;
 

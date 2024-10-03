@@ -1,0 +1,20 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../microIO.gen/sources_1/ip/ramMem/ramMem_sim_netlist.vhdl" \
+"../../../../microIO.gen/sources_1/ip/pcMem/pcMem_sim_netlist.vhdl" \
+"../../../../microIO.srcs/sources_1/imports/new/alu.vhd" \
+"../../../../microIO.srcs/sources_1/imports/capitulo17/microIO.vhd" \
+"../../../../microIO.srcs/sources_1/imports/new/miniAlu.vhd" \
+"../../../../microIO.srcs/sources_1/imports/sources_1/imports/new/myCnt.vhd" \
+"../../../../microIO.srcs/sources_1/imports/new/myCntBinarioPl.vhd" \
+"../../../../microIO.srcs/sources_1/imports/sources_1/imports/new/myCntBinarioSimple.vhd" \
+"../../../../microIO.srcs/sources_1/imports/new/pc.vhd" \
+"../../../../microIO.srcs/sources_1/new/portIO.vhd" \
+"../../../../microIO.srcs/sources_1/imports/sources_1/new/uart.vhd" \
+"../../../../microIO.srcs/sources_1/imports/sources_1/new/uartRx.vhd" \
+"../../../../microIO.srcs/sources_1/imports/sources_1/new/uartTx.vhd" \
+"../../../../microIO.srcs/sources_1/new/uc.vhd" \
+"../../../../microIO.srcs/sim_1/imports/capitulo17/microIO_tb.vhd" \
+
+# Do not sort compile order
+nosort

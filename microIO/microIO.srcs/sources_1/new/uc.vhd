@@ -47,7 +47,7 @@ constant JMP: std_logic_vector(1 downto 0) := "10";
 constant MOV: std_logic_vector(1 downto 0) := "11";
 
 --Máquina de estados
-type state_type is (selectOp, no);
+type state_type is (selectOp, nextOp, no);
 signal state, next_state : state_type;
 
 --Declaracion de signals
@@ -70,11 +70,12 @@ ramAddr <= pcData(DATA_BITS-1 downto 0);
 aluOp <= ramDataRd(DATA_BITS-1 downto 0) when pcData(16) = '0' else pcData(DATA_BITS-1 downto 0);
 portWr <= ramDataRd(DATA_BITS-1 downto 0) when pcData(16) = '0' else pcData(DATA_BITS-1 downto 0);
 pcPlAddr <= ramDataRd(DATA_BITS-1 downto 0) when pcData(16) = '0' else pcData(DATA_BITS-1 downto 0);
-uartDataTx <= ramDataRd(DATA_BITS-1 downto 0) when pcData(16) = '0' else pcData(DATA_BITS-1 downto 0);
+--uartDataTx <= ramDataRd(DATA_BITS-1 downto 0) when pcData(16) = '0' else pcData(DATA_BITS-1 downto 0);
+--Error en el tamaño
 
 with pcData(18 downto 17) select
     ramDataWr <= portRd(15 downto 0) when "00",
-                 uartDataRx(15 downto 0) when "01",
+--                 uartDataRx(15 downto 0) when "01",
                  aluAcc when "10",
                  (others => '0') when "11",
                  (others => '0') when others;
@@ -93,24 +94,39 @@ begin
     end if;
 end process;
 
-logicaSalida: process (state)
+logicaSalida: process (state, opType)
 begin
     case (state) is
-        when no=>
-            --dataTxD_S <= dataTx;
+        when selectOp =>
+            case (opType) is
+                when NOP =>
+                    pcEna <= '1';
+                when ALU =>
+                    pcEna <= '0';
+                when JMP =>
+                    pcEna <= '0';
+                when MOV =>
+                    pcEna <= '0';
+                when others =>
+                    pcEna <= '0';
+            end case;
+        when nextOp =>
+            pcEna <= '0';
+        when no =>
+            pcEna <= '0';
         when others =>
-            --dataTxD_S <= dataTxQ_S;
+            pcEna <= '0';
     end case;
 end process;
             
-logicaEstadoFuturo: process (state)
+logicaEstadoFuturo: process (state, opType)
 begin
     next_state <= state;
     case (state) is
         when selectOp =>
             case (opType) is
                 when NOP =>
-                    next_state <= no;
+                    next_state <= nextOp;
                 when ALU =>
                     next_state <= no;
                 when JMP =>
@@ -120,8 +136,11 @@ begin
                 when others =>
                     next_state <= no;
             end case;
+        when nextOp =>
+            next_state <= selectOp;
+        when no =>
         when others =>
-            next_state <= no;
+            next_state <= selectOp;
     end case;
 end process;
 
