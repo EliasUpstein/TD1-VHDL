@@ -1,0 +1,7 @@
+vhdl xpm  \
+"E:/Programas/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_VCOMP.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../../guia_15.gen/sources_1/ip/pcMem/pcMem_sim_netlist.vhdl" \
+
+nosort

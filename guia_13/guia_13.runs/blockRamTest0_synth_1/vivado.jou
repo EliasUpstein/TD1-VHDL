@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Aug 19 00:22:33 2024
+# Process ID: 16152
+# Current directory: C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/guia_13/guia_13.runs/blockRamTest0_synth_1
+# Command line: vivado.exe -log blockRamTest0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source blockRamTest0.tcl
+# Log file: C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/guia_13/guia_13.runs/blockRamTest0_synth_1/blockRamTest0.vds
+# Journal file: C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/guia_13/guia_13.runs/blockRamTest0_synth_1\vivado.jou
+#-----------------------------------------------------------
+source blockRamTest0.tcl -notrace

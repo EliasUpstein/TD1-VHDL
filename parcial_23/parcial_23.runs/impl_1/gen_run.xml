@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1724897905">
+  <File Type="BITSTR-BMM" Name="cronos_bd.bmm"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="cronos_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="cronos_timing_summary_init.rpt"/>
+  <File Type="ROUTE-PWR" Name="cronos_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="cronos.tcl"/>
+  <File Type="OPT-TIMING" Name="cronos_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="cronos_opt.dcp"/>
+  <File Type="ROUTE-PWR-SUM" Name="cronos_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="cronos_reports.tcl"/>
+  <File Type="OPT-DRC" Name="cronos_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="cronos.hwdef"/>
+  <File Type="PWROPT-DCP" Name="cronos_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="cronos_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="cronos_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="cronos_placed.dcp"/>
+  <File Type="PLACE-IO" Name="cronos_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="cronos_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="cronos_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="cronos_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="cronos_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="cronos_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="cronos_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-TIMING" Name="cronos_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="cronos_postplace_pwropt.dcp"/>
+  <File Type="BG-BIN" Name="cronos.bin"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="cronos_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="cronos_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="cronos_drc_physopted.rpt"/>
+  <File Type="BITSTR-MSK" Name="cronos.msk"/>
+  <File Type="PHYSOPT-TIMING" Name="cronos_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="cronos_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="cronos_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="cronos_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="cronos_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="cronos_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="cronos_drc_routed.rpx"/>
+  <File Type="BITSTR-MMI" Name="cronos.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="cronos_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="cronos_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="cronos_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="cronos_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="cronos_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="cronos_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="cronos_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="cronos_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="cronos_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="cronos_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="cronos_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="cronos_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="cronos_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="cronos_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="cronos_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="cronos_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="cronos_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="cronos_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="cronos_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="cronos_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="cronos_bus_skew_postroute_physopted.pb"/>
+  <File Type="BG-BIT" Name="cronos.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="cronos_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-RBT" Name="cronos.rbt"/>
+  <File Type="BITSTR-NKY" Name="cronos.nky"/>
+  <File Type="PDI-FILE" Name="cronos.pdi"/>
+  <File Type="RCFI_FILE" Name="cronos.rcfi"/>
+  <File Type="CFI_FILE" Name="cronos.cfi"/>
+  <File Type="RNPI_FILE" Name="cronos.rnpi"/>
+  <File Type="NPI_FILE" Name="cronos.npi"/>
+  <File Type="RBD_FILE" Name="cronos.rbd"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="cronos.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="cronos.sysdef"/>
+  <File Type="BG-BGN" Name="cronos.bgn"/>
+  <File Type="BG-DRC" Name="cronos.drc"/>
+  <File Type="RDI-RDI" Name="cronos.vdi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/new/myCnt.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../guia_15/guia_15.srcs/sources_1/imports/new/myCnt.vhd"/>
+        <Attr Name="ImportTime" Val="1723757705"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/new/myCntBiDir.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../guia_15/guia_15.srcs/sources_1/imports/new/myCntBiDir.vhd"/>
+        <Attr Name="ImportTime" Val="1724872381"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/new/myEdgeDetector.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../guia_15/guia_15.srcs/sources_1/imports/new/myEdgeDetector.vhd"/>
+        <Attr Name="ImportTime" Val="1724865655"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/sources_1/new/parpadeo1S.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../guia_15/guia_15.srcs/sources_1/new/parpadeo1S.vhd"/>
+        <Attr Name="ImportTime" Val="1724868119"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/cronos.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="cronos"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/2023/cronos.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../material/examenes/parciales/2023/cronos.xdc"/>
+        <Attr Name="ImportTime" Val="1723814837"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020">
+      <Desc>Default settings for Implementation.</Desc>
+    </StratHandle>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>

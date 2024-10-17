@@ -1,0 +1,8 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../parcial_23.srcs/sources_1/new/sat.vhd" \
+"../../../../parcial_23.srcs/sources_1/imports/new/satGen.vhd" \
+"../../../../parcial_23.srcs/sim_1/new/sat_tb.vhd" \
+
+# Do not sort compile order
+nosort

@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../guia_06.srcs/sources_1/new/deco3a8Ena.vhd" \
+"../../../../guia_06.srcs/sim_1/imports/capitulo06/deco3a8Ena_tb.vhd" \
+
+# Do not sort compile order
+nosort

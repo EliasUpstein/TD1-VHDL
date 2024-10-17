@@ -1,0 +1,51 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Wed Apr 24 21:22:14 2024
+# Process ID: 18376
+# Current directory: C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/guia_06
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6872 C:\Users\Casa\Desktop\Eli\Universidad\Tercer Nivel\Tecnicas Digitales I\eupstein\guia_06\guia_06.xpr
+# Log file: C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/guia_06/vivado.log
+# Journal file: C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/guia_06\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/guia_06/guia_06.xpr}
+update_compile_order -fileset sources_1
+launch_simulation
+source myAnd4_tb.tcl
+close_sim
+launch_simulation
+source myAnd4_tb.tcl
+run all
+close [ open {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/guia_06/guia_06.srcs/sources_1/new/fa.vhd} w ]
+add_files {{C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/guia_06/guia_06.srcs/sources_1/new/fa.vhd}}
+update_compile_order -fileset sources_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+import_files -fileset sim_1 -norecurse {{C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/material/material/guia/capitulo06/fa_tb.vhd}}
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top fa_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top fa [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+launch_simulation
+close_sim
+launch_simulation
+source fa_tb.tcl
+run all
+run all
+run 8 us
+run 800 ns
+run 1 us
+run 10 us
+relaunch_sim
+close_sim

@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.runs/synth_1/microIO.tcl"
+  variable script "C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.runs/synth_1/microIO.tcl"
   variable category "vivado_synth"
 }
 
@@ -78,35 +78,35 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir {C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.cache/wt} [current_project]
-set_property parent.project_path {C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.xpr} [current_project]
+set_property webtalk.parent_dir {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.cache/wt} [current_project]
+set_property parent.project_path {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.xpr} [current_project]
 set_property XPM_LIBRARIES XPM_MEMORY [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property ip_output_repo {c:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.cache/ip} [current_project]
+set_property ip_output_repo {c:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.cache/ip} [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-add_files {{C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/material/material/guia/capitulo17/test00.coe}}
+add_files {{C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/material/material/guia/capitulo17/test00.coe}}
 read_vhdl -library xil_defaultlib {
-  {C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/new/alu.vhd}
-  {C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/new/miniAlu.vhd}
-  {C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/sources_1/imports/new/myCnt.vhd}
-  {C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/new/myCntBinarioPl.vhd}
-  {C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/sources_1/imports/new/myCntBinarioSimple.vhd}
-  {C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/new/pc.vhd}
-  {C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/new/portIO.vhd}
-  {C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/sources_1/new/uart.vhd}
-  {C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/sources_1/new/uartRx.vhd}
-  {C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/sources_1/new/uartTx.vhd}
-  {C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/new/uc.vhd}
-  {C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/capitulo17/microIO.vhd}
+  {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/new/alu.vhd}
+  {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/new/miniAlu.vhd}
+  {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/sources_1/imports/new/myCnt.vhd}
+  {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/new/myCntBinarioPl.vhd}
+  {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/sources_1/imports/new/myCntBinarioSimple.vhd}
+  {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/new/pc.vhd}
+  {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/new/portIO.vhd}
+  {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/sources_1/new/uart.vhd}
+  {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/sources_1/new/uartRx.vhd}
+  {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/sources_1/new/uartTx.vhd}
+  {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/new/uc.vhd}
+  {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/capitulo17/microIO.vhd}
 }
-read_ip -quiet {{C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/ip/ramMem/ramMem.xci}}
-set_property used_in_implementation false [get_files -all {{c:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.gen/sources_1/ip/ramMem/ramMem_ooc.xdc}}]
+read_ip -quiet {{C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/ip/ramMem/ramMem.xci}}
+set_property used_in_implementation false [get_files -all {{c:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.gen/sources_1/ip/ramMem/ramMem_ooc.xdc}}]
 
-read_ip -quiet {{C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/ip/pcMem/pcMem.xci}}
-set_property used_in_implementation false [get_files -all {{c:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.gen/sources_1/ip/pcMem/pcMem_ooc.xdc}}]
+read_ip -quiet {{C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/ip/pcMem/pcMem.xci}}
+set_property used_in_implementation false [get_files -all {{c:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.gen/sources_1/ip/pcMem/pcMem_ooc.xdc}}]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -117,8 +117,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc {{C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/constrs_1/imports/capitulo17/microIO.xdc}}
-set_property used_in_implementation false [get_files {{C:/Users/elias/Desktop/Facultad/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/constrs_1/imports/capitulo17/microIO.xdc}}]
+read_xdc {{C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/constrs_1/imports/capitulo17/microIO.xdc}}
+set_property used_in_implementation false [get_files {{C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/constrs_1/imports/capitulo17/microIO.xdc}}]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]

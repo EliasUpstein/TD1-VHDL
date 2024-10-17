@@ -1,0 +1,11 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../parcial_23.srcs/sources_1/new/cronos.vhd" \
+"../../../../parcial_23.srcs/sources_1/imports/new/myCnt.vhd" \
+"../../../../parcial_23.srcs/sources_1/imports/new/myCntBiDir.vhd" \
+"../../../../parcial_23.srcs/sources_1/imports/sources_1/imports/new/myEdgeDetector.vhd" \
+"../../../../parcial_23.srcs/sources_1/imports/sources_1/new/parpadeo1S.vhd" \
+"../../../../parcial_23.srcs/sim_1/imports/2023/cronos_tb.vhd" \
+
+# Do not sort compile order
+nosort

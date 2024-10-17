@@ -1,0 +1,7 @@
+vhdl xpm  \
+"E:/Programas/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_VCOMP.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../../parcial_23.gen/sources_1/ip/lifoBlockRam/lifoBlockRam_sim_netlist.vhdl" \
+
+nosort

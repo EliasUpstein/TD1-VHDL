@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../guia_09.srcs/sources_1/new/myFFDREN.vhd" \
+"../../../../guia_09.srcs/sim_1/imports/capitulo09/myFFDREN_tb.vhd" \
+
+# Do not sort compile order
+nosort

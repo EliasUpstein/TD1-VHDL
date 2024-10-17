@@ -1,0 +1,9 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../guia_15.gen/sources_1/ip/pcMem/pcMem_sim_netlist.vhdl" \
+"../../../../guia_15.srcs/sources_1/imports/new/myCntBinarioPl.vhd" \
+"../../../../guia_15.srcs/sources_1/new/pc.vhd" \
+"../../../../guia_15.srcs/sim_1/new/pc_tb.vhd" \
+
+# Do not sort compile order
+nosort

@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../parcial_22.srcs/sources_1/imports/Downloads/genSignal.vhd" \
+"../../../../parcial_22.srcs/sim_1/imports/primerParcial/genSignal_tb.vhd" \
+
+# Do not sort compile order
+nosort

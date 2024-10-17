@@ -1,8 +1,8 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Thu Oct  3 09:02:00 2024
-| Host         : Elias running 64-bit major release  (build 9200)
+| Date         : Thu Oct 17 10:34:26 2024
+| Host         : DESKTOP-IDPMHE5 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file pcMem_utilization_synth.rpt -pb pcMem_utilization_synth.pb
 | Design       : pcMem
 | Device       : 7z010iclg400-1L

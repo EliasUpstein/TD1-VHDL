@@ -45,6 +45,16 @@ constant NOP: std_logic_vector(1 downto 0) := "00";
 constant ALU: std_logic_vector(1 downto 0) := "01";
 constant JMP: std_logic_vector(1 downto 0) := "10";
 constant MOV: std_logic_vector(1 downto 0) := "11";
+constant MEM: std_logic := '0';
+constant LIT: std_logic := '1';
+constant CERO8BITS: std_logic_vector(7 downto 0) := "00000000";     --Concatena ceros al dato de la uart
+--Constantes de la instrucción MOV
+constant READ: std_logic_vector(3 downto 0) := "0000";
+constant READUART: std_logic_vector(3 downto 0) := "0001";
+constant MOV_0: std_logic_vector(3 downto 0) := "0010";
+constant MOVZ: std_logic_vector(3 downto 0) := "0011";
+constant WRITE: std_logic_vector(3 downto 0) := "0100";
+constant WRITEUART: std_logic_vector(3 downto 0) := "0101";
 
 --Máquina de estados
 type state_type is (selectOp, nextOp, no);
@@ -57,6 +67,7 @@ signal ramDataWr: std_logic_vector(DATA_BITS-1 downto 0) := (others => '0');
 signal ramDataRd: std_logic_vector(DATA_BITS-1 downto 0) := (others => '0');
 
 signal opType: std_logic_vector(1 downto 0) := (others => '0');
+signal movCode: std_logic_vector(3 downto 0) := (others => '0');
 
 begin
 
@@ -67,51 +78,71 @@ Port map(clka => clk, wea => ramWea, addra => ramAddr(9 downto 0), dina => ramDa
 --Lógica combinacional
 aluCode <= pcData(20 downto 17);
 ramAddr <= pcData(DATA_BITS-1 downto 0);
-aluOp <= ramDataRd(DATA_BITS-1 downto 0) when pcData(16) = '0' else pcData(DATA_BITS-1 downto 0);
-portWr <= ramDataRd(DATA_BITS-1 downto 0) when pcData(16) = '0' else pcData(DATA_BITS-1 downto 0);
-pcPlAddr <= ramDataRd(DATA_BITS-1 downto 0) when pcData(16) = '0' else pcData(DATA_BITS-1 downto 0);
---uartDataTx <= ramDataRd(DATA_BITS-1 downto 0) when pcData(16) = '0' else pcData(DATA_BITS-1 downto 0);
---Error en el tamaño
+aluOp <= ramDataRd(DATA_BITS-1 downto 0) when pcData(16) = MEM else pcData(DATA_BITS-1 downto 0);
+portWr <= ramDataRd(DATA_BITS-1 downto 0) when pcData(16) = MEM else pcData(DATA_BITS-1 downto 0);
+pcPlAddr <= ramDataRd(DATA_BITS-1 downto 0) when pcData(16) = MEM else pcData(DATA_BITS-1 downto 0);
+uartDataTx <= ramDataRd(UART_DATA_BITS-1 downto 0) when pcData(16) = MEM else pcData(UART_DATA_BITS-1 downto 0);  --Trunca el dato
 
 with pcData(18 downto 17) select
-    ramDataWr <= portRd(15 downto 0) when "00",
---                 uartDataRx(15 downto 0) when "01",
+    ramDataWr <= portRd(DATA_BITS-1 downto 0) when "00",
+                 CERO8BITS & uartDataRx(UART_DATA_BITS-1 downto 0) when "01",   --Concatena ceros delante
                  aluAcc when "10",
                  (others => '0') when "11",
                  (others => '0') when others;
                  
 opType <= pcData(22 downto 21);
+movCode <= pcData(20 downto 17);
 
 --Maquina de Estados            
 estadoProc: process (clk)
 begin
     if (rising_edge (clk)) then
         if (rst = '1') then
-            --state <= endOfTransmision;
+            state <= selectOp;
         else
             state <= next_state;
         end if;
     end if;
 end process;
 
-logicaSalida: process (state, opType)
+logicaSalida: process (state, opType, movCode)
 begin
     case (state) is
         when selectOp =>
+            pcEna <= '0';
+            ramWea <= "0";
+            portWrEna <= '0';
+            uartDataWr <= '0';
             case (opType) is
-                when NOP =>
-                    pcEna <= '1';
+                when NOP => --No hace nada
                 when ALU =>
-                    pcEna <= '0';
                 when JMP =>
-                    pcEna <= '0';
                 when MOV =>
-                    pcEna <= '0';
+                    case(movCode) is
+                        when READ =>
+                            ramWea <= "1";
+                        when READUART =>
+                            ramWea <= "1";
+                        when MOV_0 =>
+                            ramWea <= "1";
+                        when MOVZ =>
+                            ramWea <= "1";
+                        when WRITE =>
+                            portWrEna <= '1';
+                        when WRITEUART =>
+                            uartDataWr <= '1';
+                        when others =>
+                            ramWea <= "0";
+                            portWrEna <= '0';
+                            uartDataWr <= '0';
+                    end case;
                 when others =>
-                    pcEna <= '0';
             end case;
         when nextOp =>
-            pcEna <= '0';
+            ramWea <= "0";
+            portWrEna <= '0';
+            uartDataWr <= '0';
+            pcEna <= '1';
         when no =>
             pcEna <= '0';
         when others =>
@@ -132,7 +163,7 @@ begin
                 when JMP =>
                     next_state <= no;
                 when MOV =>
-                    next_state <= no;
+                    next_state <= nextOp;
                 when others =>
                     next_state <= no;
             end case;

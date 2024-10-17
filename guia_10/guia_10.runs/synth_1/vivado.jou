@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Wed Jun 26 23:04:39 2024
+# Process ID: 9660
+# Current directory: C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/guia_10/guia_10.runs/synth_1
+# Command line: vivado.exe -log myCntRing.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source myCntRing.tcl
+# Log file: C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/guia_10/guia_10.runs/synth_1/myCntRing.vds
+# Journal file: C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/guia_10/guia_10.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source myCntRing.tcl -notrace

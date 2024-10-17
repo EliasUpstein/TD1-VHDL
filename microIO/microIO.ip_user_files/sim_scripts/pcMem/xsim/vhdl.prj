@@ -1,5 +1,5 @@
 vhdl xpm  \
-"C:/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_VCOMP.vhd" \
+"E:/Programas/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_VCOMP.vhd" \
 
 vhdl xil_defaultlib  \
 "../../../../microIO.gen/sources_1/ip/pcMem/pcMem_sim_netlist.vhdl" \

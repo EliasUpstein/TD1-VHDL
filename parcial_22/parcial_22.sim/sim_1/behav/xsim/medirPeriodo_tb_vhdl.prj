@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../parcial_22.srcs/sources_1/imports/Downloads/medirPeriodo.vhd" \
+"../../../../parcial_22.srcs/sim_1/imports/primerParcial/medirPeriodo_tb.vhd" \
+
+# Do not sort compile order
+nosort

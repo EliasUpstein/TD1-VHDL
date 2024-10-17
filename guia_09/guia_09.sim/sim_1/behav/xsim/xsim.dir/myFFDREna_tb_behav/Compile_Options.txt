@@ -1,0 +1,1 @@
+-wto "45b38abbda824ceab6dbd1234302196f" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" --snapshot "myFFDREna_tb_behav" "xil_defaultlib.myFFDREna_tb" -log "elaborate.log" 

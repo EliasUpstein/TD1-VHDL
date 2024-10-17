@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../guia_08.srcs/sources_1/new/sat16a8.vhd" \
+"../../../../guia_08.srcs/sim_1/imports/capitulo08/sat16a8_tb.vhd" \
+
+# Do not sort compile order
+nosort

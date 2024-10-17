@@ -1,0 +1,1 @@
+-wto "f4bff39ab3594b3cb99e0c33a6c1a1c0" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" --snapshot "cronos_tb_behav" "xil_defaultlib.cronos_tb" -log "elaborate.log" 

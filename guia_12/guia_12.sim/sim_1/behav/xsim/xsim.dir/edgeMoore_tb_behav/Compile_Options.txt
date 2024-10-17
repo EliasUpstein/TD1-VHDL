@@ -1,0 +1,1 @@
+-wto "2e5a05c6da5a403cbaa4c656ee875f23" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" --snapshot "edgeMoore_tb_behav" "xil_defaultlib.edgeMoore_tb" -log "elaborate.log" 

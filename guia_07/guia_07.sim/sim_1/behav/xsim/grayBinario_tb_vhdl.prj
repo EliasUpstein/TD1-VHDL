@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../guia_07.srcs/sources_1/new/grayBinario.vhd" \
+"../../../../guia_07.srcs/sim_1/imports/capitulo07/grayBinario_tb.vhd" \
+
+# Do not sort compile order
+nosort
