@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Thu Oct 17 10:33:09 2024
-# Process ID: 10504
+# Start of session at: Thu Oct 24 09:32:51 2024
+# Process ID: 11884
 # Current directory: C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.runs/pcMem_synth_1
 # Command line: vivado.exe -log pcMem.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source pcMem.tcl
 # Log file: C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.runs/pcMem_synth_1/pcMem.vds

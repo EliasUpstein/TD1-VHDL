@@ -67,7 +67,7 @@ aux <= pos_S when ((sat = '1') and (ov_S = '1') and (a(DATA_BITS-1) = '0')) else
        neg_S when ((sat = '1') and (ov_S = '1') and (a(DATA_BITS-1) = '1')) else
        ResSuma(DATA_BITS downto 1) when (((sat = '0') or (ov_S = '0')) and (code = "0011")) else
        ResResta(DATA_BITS downto 1) when (((sat = '0') or (ov_S = '0')) and (code = "0100")) else
-       CTE_0;
+       CTE_0; -- o resultado (a)? desición de diseño?
 
 --And, Or y Xor
 ResAnd <= a and b;
@@ -84,8 +84,8 @@ with to_integer(unsigned(code)) select
                  --
                  a when 5,
                  b when 6,          -- ACC = op 
-                 aux when 7,        -- carry = op(0)
-                 aux when 8,        -- satSet = op
+--                 aux when 7,        -- carry = op(0)
+--                 aux when 8,        -- satSet = op
                  a when others;     -- No realiza acción    
 
 res <= resultado;

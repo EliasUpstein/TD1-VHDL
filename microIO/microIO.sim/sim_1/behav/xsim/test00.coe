@@ -13,6 +13,26 @@ memory_initialization_vector=
 006AAAAA
 006BAAAA
 00310000
+00000000
+00000000
+00000000
+00230001
+00200001 
+00250009 
+00240009 
+00210008 
+00220008  
+00200001 
+0027000F  
+0026000F 
+0027FFFF
+00200001
+0029000F 
+0028000F  
+0029FFFF
+00000000  
+00000000    
+00000000    
 00680000
 00000000
 00000000
@@ -43,7 +63,27 @@ memory_initialization_vector=
 0069AAAA    ;MOV - WRITE - LIT
 006AAAAA    ;MOV - WRITEUART - MEM
 006BAAAA    ;MOV - WRITEUART - LIT
-00310000    ; sat = 0                El tb en PORT_A colo 0x8000 y en PORT_B 0x7F00
+00310000    ; sat = 0                Limpia el acc y el op, todo en 0
+00000000    ;NOP
+00000000    ;NOP
+00000000    ;NOP
+00230001    ;ALU                    OR  - LIT (0000 | 0001 = 0001)
+00200001    ;ALU                    AND - MEM (0001 & 0000 = 0000)
+00250009    ;ALU                    XOR - LIT (0000 xor 1001 = 1001)
+00240009    ;ALU                    XOR - MEM (1001 xor 0000 = 1001)
+00210008    ;ALU                    AND - LIT (1001 & 1000 = 1000)
+00220008    ;ALU                    OR  - MEM (1000 | 0000 = 1000)     
+00200001    ;ALU                    AND - MEM (1000 & 0000 = 0000)  limpia el valor
+0027000F    ;ALU                    SUM - LIT (0000 + 1111 = 1111)
+0026000F    ;ALU                    SUM - MEM (1111 + 0000 = 1111)
+0027FFFF    ;ALU                    SUM - LIT (1111 + FFFF, carry)
+00200001    ;ALU                    AND - MEM (FFFF? & 0000 = 0000)  limpia el valor
+0029000F    ;ALU                    RES - LIT (0000 - 000F = FFF0)
+0028000F    ;ALU                    RES - MEM (FFF0 - 0000 = FFF0)
+0029FFFF    ;ALU                    RES - LIT (FFF0 - FFFF = 1000, borrow)
+00000000    ;NOP
+00000000    ;NOP
+00000000    ;NOP
 00600000    ;*(0x0000) = PORT       (SAT = 0)
 00000000    ;NOP                    (*(0x0000) = 0x8000, segun port A en TB)
 00000000    ;NOP

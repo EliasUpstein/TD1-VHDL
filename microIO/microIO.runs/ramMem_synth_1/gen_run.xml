@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="ramMem_synth_1" LaunchPart="xc7z010iclg400-1L" LaunchTime="1729165162">
   <File Type="PA-TCL" Name="ramMem.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="ramMem_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="ramMem_reports.tcl"/>
   <File Type="RDS-RDS" Name="ramMem.vds"/>
   <File Type="RDS-UTIL" Name="ramMem_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="ramMem_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="ramMem.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="ramMem_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="ramMem_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/ramMem">
     <File Path="$PSRCDIR/sources_1/ip/ramMem/ramMem.xci">
       <FileInfo>

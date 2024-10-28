@@ -32,6 +32,8 @@ port ( a: in std_logic_vector (DATA_BITS-1 downto 0);
        negative: out std_logic);
 end component;
 
+constant CTE_0: std_logic_vector(DATA_BITS-1 downto 0) := (others => '0');
+
 --Declaración de signals
 signal acc_q: std_logic_vector (DATA_BITS-1 downto 0) := (others => '0');
 signal acc_d: std_logic_vector (DATA_BITS-1 downto 0) := (others => '0');
@@ -42,6 +44,8 @@ signal carryOut: std_logic := '0';
 
 signal sat_q: std_logic := '0';
 signal sat_d: std_logic := '0';
+signal ov_q: std_logic := '0';
+signal ov_d: std_logic := '0';
 
 signal aux_S: std_logic := '0';
 
@@ -56,9 +60,9 @@ Port map(a => acc_q,
          res => acc_d,
          sat => sat_q,
          code => code,
-         zero => zero,
-         overflow => overflow,
-         negative => negative);
+         zero => open,
+         overflow => ov_d,
+         negative => open);
          
 process (clk)
     begin
@@ -67,10 +71,12 @@ process (clk)
                 acc_q <= (others => '0');
                 carryBorrow_q <= '0';
                 sat_q <= '0';
+                ov_q <= '0';
             elsif (ena = '1') then
                 acc_q <= acc_d;
                 carryBorrow_q <= carryBorrow_d;
                 sat_q <= sat_d;
+                ov_q <= ov_d;
             end if;
         end if;
 end process;     
@@ -88,6 +94,11 @@ with to_integer(unsigned(code)) select
 
 acc <= acc_q;
 carryBorrow <= carryBorrow_q;
+overflow <= ov_q;
+
+--Cálculo de zero y negative
+zero <= '1' when (acc_q = CTE_0) else '0';
+negative <= acc_q(DATA_BITS-1);
 
 sat_d <= op(0) when (TO_INTEGER(unsigned(code)) = 8) else sat_q;
 

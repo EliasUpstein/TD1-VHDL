@@ -55,9 +55,15 @@ constant MOV_0: std_logic_vector(3 downto 0) := "0010";
 constant MOVZ: std_logic_vector(3 downto 0) := "0011";
 constant WRITE: std_logic_vector(3 downto 0) := "0100";
 constant WRITEUART: std_logic_vector(3 downto 0) := "0101";
+--Constantes de la instrucción JMP
+constant CONDZ: std_logic_vector(3 downto 0) := "0000";
+constant CONDOV: std_logic_vector(3 downto 0) := "0001";
+constant CONDCB: std_logic_vector(3 downto 0) := "0010";
+constant CONDN: std_logic_vector(3 downto 0) := "0011";
+constant JMP_0: std_logic_vector(3 downto 0) := "0100";
 
 --Máquina de estados
-type state_type is (selectOp, nextOp, no);
+type state_type is (selectOp, nextOp);
 signal state, next_state : state_type;
 
 --Declaracion de signals
@@ -67,7 +73,7 @@ signal ramDataWr: std_logic_vector(DATA_BITS-1 downto 0) := (others => '0');
 signal ramDataRd: std_logic_vector(DATA_BITS-1 downto 0) := (others => '0');
 
 signal opType: std_logic_vector(1 downto 0) := (others => '0');
-signal movCode: std_logic_vector(3 downto 0) := (others => '0');
+signal opCode: std_logic_vector(3 downto 0) := (others => '0');
 
 begin
 
@@ -91,7 +97,7 @@ with pcData(18 downto 17) select
                  (others => '0') when others;
                  
 opType <= pcData(22 downto 21);
-movCode <= pcData(20 downto 17);
+opCode <= pcData(20 downto 17);
 
 --Maquina de Estados            
 estadoProc: process (clk)
@@ -105,20 +111,53 @@ begin
     end if;
 end process;
 
-logicaSalida: process (state, opType, movCode)
+logicaSalida: process (state, opType, opCode, aluZero, aluOverflow, aluCarryBorrow, aluNegative)
 begin
     case (state) is
         when selectOp =>
             pcEna <= '0';
+            aluEna <= '0';
             ramWea <= "0";
             portWrEna <= '0';
             uartDataWr <= '0';
+            pcPl <= '0';
             case (opType) is
                 when NOP => --No hace nada
                 when ALU =>
+                    aluEna <= '1';
                 when JMP =>
+                    pcPl <= '0';
+                    pcEna <= '0';
+                    case(opCode) is
+                        when CONDZ =>
+                             if (aluZero = '1') then
+                                pcPl <= '1';
+                                pcEna <= '1';
+                            end if;
+                        when CONDOV =>
+                            if (aluOverflow = '1') then
+                                pcPl <= '1';
+                                pcEna <= '1';
+                            end if;
+                        when CONDCB =>
+                            if (aluCarryBorrow = '1') then
+                                pcPl <= '1';
+                                pcEna <= '1';
+                            end if;
+                        when CONDN =>
+                            if (aluNegative = '1') then
+                                pcPl <= '1';
+                                pcEna <= '1';
+                            end if;
+                        when JMP_0 =>
+                            pcPl <= '1';
+                            pcEna <= '1';
+                        when others =>
+                            pcPl <= '0';
+                            pcEna <= '0';
+                    end case;
                 when MOV =>
-                    case(movCode) is
+                    case(opCode) is
                         when READ =>
                             ramWea <= "1";
                         when READUART =>
@@ -139,12 +178,17 @@ begin
                 when others =>
             end case;
         when nextOp =>
+            --NOP
+            --ALU
+            aluEna <= '0';
+            --MOV
             ramWea <= "0";
             portWrEna <= '0';
             uartDataWr <= '0';
+            --JMP
+            pcPl <= '0';
+            --PC (para pedir siguiente instrucción)
             pcEna <= '1';
-        when no =>
-            pcEna <= '0';
         when others =>
             pcEna <= '0';
     end case;
@@ -159,17 +203,16 @@ begin
                 when NOP =>
                     next_state <= nextOp;
                 when ALU =>
-                    next_state <= no;
+                    next_state <= nextOp;
                 when JMP =>
-                    next_state <= no;
+                    next_state <= nextOp;
                 when MOV =>
                     next_state <= nextOp;
                 when others =>
-                    next_state <= no;
+                    next_state <= selectOp;
             end case;
         when nextOp =>
             next_state <= selectOp;
-        when no =>
         when others =>
             next_state <= selectOp;
     end case;

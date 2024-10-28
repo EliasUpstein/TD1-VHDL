@@ -68,42 +68,42 @@ end process;
 uartRx <= uartTx;
 
 -- Stimulus process, para test00.coe --
-stimProc :process
-begin      
-    portRd <= (others => '0');
-    wait until falling_edge (rst); 
-    wait until rising_edge (clk);
-    portRd <= X"8000";
-    wait for 50 ns;  -- Ajustar deacuerdo al COE
-    wait until rising_edge (clk);
-    portRd <= X"7F00";
-    wait until rising_edge (clk);
-    portRd <= X"0001";
-    wait until rising_edge (clk);
-    portRd <= X"0010";
-    wait until rising_edge (clk);
-    portRd <= X"0011";
-    wait;    
-end process;
-
--- Stimulus process, para test01.coe --
 --stimProc :process
 --begin      
 --    portRd <= (others => '0');
 --    wait until falling_edge (rst); 
 --    wait until rising_edge (clk);
---    portRd <= X"5555";
---    wait for 50 ns;  -- Ajustar deacuerdo al COE
---    wait until rising_edge (clk);
---    portRd <= X"7FFF";
---    wait for 50 ns;  -- Ajustar deacuerdo al COE
---    wait until rising_edge (clk);
 --    portRd <= X"8000";
 --    wait for 50 ns;  -- Ajustar deacuerdo al COE
 --    wait until rising_edge (clk);
---    portRd <= X"FFFD";
+--    portRd <= X"7F00";
+--    wait until rising_edge (clk);
+--    portRd <= X"0001";
+--    wait until rising_edge (clk);
+--    portRd <= X"0010";
+--    wait until rising_edge (clk);
+--    portRd <= X"0011";
 --    wait;    
 --end process;
+
+-- Stimulus process, para test01.coe --
+stimProc :process
+begin      
+    portRd <= (others => '0');
+    wait until falling_edge (rst); 
+    wait until rising_edge (clk);
+    portRd <= X"5555";
+    wait for 150 ns;  -- Ajustar deacuerdo al COE
+    wait until rising_edge (clk);
+    portRd <= X"7FFF";
+    wait for 50 ns;  -- Ajustar deacuerdo al COE
+    wait until rising_edge (clk);
+    portRd <= X"8000";
+    wait for 50 ns;  -- Ajustar deacuerdo al COE
+    wait until rising_edge (clk);
+    portRd <= X"FFFD";
+    wait;    
+end process;
 
 
 
