@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="microIO_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="microIO_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="934916fs"></ZoomStartTime>
+      <ZoomEndTime time="1013017fs"></ZoomEndTime>
+      <Cursor1Time time="1000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="131"></NameColumnWidth>
+      <ValueColumnWidth column_width="116"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="27" />
+   <wvobject fp_name="/microIO_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/portRd" type="array">
+      <obj_property name="ElementShortName">portRd[15:0]</obj_property>
+      <obj_property name="ObjectShortName">portRd[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/portWr" type="array">
+      <obj_property name="ElementShortName">portWr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">portWr[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uartTx" type="logic">
+      <obj_property name="ElementShortName">uartTx</obj_property>
+      <obj_property name="ObjectShortName">uartTx</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uartRx" type="logic">
+      <obj_property name="ElementShortName">uartRx</obj_property>
+      <obj_property name="ObjectShortName">uartRx</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/uartDataTx" type="array">
+      <obj_property name="ElementShortName">uartDataTx[7:0]</obj_property>
+      <obj_property name="ObjectShortName">uartDataTx[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/uartDataRx" type="array">
+      <obj_property name="ElementShortName">uartDataRx[7:0]</obj_property>
+      <obj_property name="ObjectShortName">uartDataRx[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/state" type="other">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/next_state" type="other">
+      <obj_property name="ElementShortName">next_state</obj_property>
+      <obj_property name="ObjectShortName">next_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/pcData" type="array">
+      <obj_property name="ElementShortName">pcData[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pcData[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/pcEna" type="logic">
+      <obj_property name="ElementShortName">pcEna</obj_property>
+      <obj_property name="ObjectShortName">pcEna</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/pcPl" type="logic">
+      <obj_property name="ElementShortName">pcPl</obj_property>
+      <obj_property name="ObjectShortName">pcPl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/opType" type="array">
+      <obj_property name="ElementShortName">opType[1:0]</obj_property>
+      <obj_property name="ObjectShortName">opType[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/opCode" type="array">
+      <obj_property name="ElementShortName">opCode[3:0]</obj_property>
+      <obj_property name="ObjectShortName">opCode[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/aluEna" type="logic">
+      <obj_property name="ElementShortName">aluEna</obj_property>
+      <obj_property name="ObjectShortName">aluEna</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/aluCode" type="array">
+      <obj_property name="ElementShortName">aluCode[3:0]</obj_property>
+      <obj_property name="ObjectShortName">aluCode[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/aluOp" type="array">
+      <obj_property name="ElementShortName">aluOp[15:0]</obj_property>
+      <obj_property name="ObjectShortName">aluOp[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/aluAcc" type="array">
+      <obj_property name="ElementShortName">aluAcc[15:0]</obj_property>
+      <obj_property name="ObjectShortName">aluAcc[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/aluCarryBorrow" type="logic">
+      <obj_property name="ElementShortName">aluCarryBorrow</obj_property>
+      <obj_property name="ObjectShortName">aluCarryBorrow</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/aluZero" type="logic">
+      <obj_property name="ElementShortName">aluZero</obj_property>
+      <obj_property name="ObjectShortName">aluZero</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/aluNegative" type="logic">
+      <obj_property name="ElementShortName">aluNegative</obj_property>
+      <obj_property name="ObjectShortName">aluNegative</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/aluOverflow" type="logic">
+      <obj_property name="ElementShortName">aluOverflow</obj_property>
+      <obj_property name="ObjectShortName">aluOverflow</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/ramAddr" type="array">
+      <obj_property name="ElementShortName">ramAddr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ramAddr[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/ramWea" type="array">
+      <obj_property name="ElementShortName">ramWea[0:0]</obj_property>
+      <obj_property name="ObjectShortName">ramWea[0:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/ramDataWr" type="array">
+      <obj_property name="ElementShortName">ramDataWr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ramDataWr[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/microIO_tb/uut/ucInst/ramDataRd" type="array">
+      <obj_property name="ElementShortName">ramDataRd[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ramDataRd[15:0]</obj_property>
+   </wvobject>
+</wave_config>

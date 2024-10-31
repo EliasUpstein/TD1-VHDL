@@ -47,6 +47,8 @@ signal sat_d: std_logic := '0';
 signal ov_q: std_logic := '0';
 signal ov_d: std_logic := '0';
 
+signal ov: std_logic := '0';
+
 signal aux_S: std_logic := '0';
 
 begin
@@ -61,7 +63,7 @@ Port map(a => acc_q,
          sat => sat_q,
          code => code,
          zero => open,
-         overflow => ov_d,
+         overflow => ov,
          negative => open);
          
 process (clk)
@@ -81,8 +83,8 @@ process (clk)
         end if;
 end process;     
 
-aux_S <= acc_q(DATA_BITS - TO_INTEGER(signed(op))) when ((TO_INTEGER(signed(op)) > 0) and (TO_INTEGER(signed(op)) < 16)) else
-         acc_q(-1 - TO_INTEGER(signed(op))) when ((TO_INTEGER(signed(op)) < 0) and (TO_INTEGER(signed(op)) > -16)) else
+aux_S <= acc_q(DATA_BITS - TO_INTEGER(signed(op))) when ((TO_INTEGER(signed(op)) > 0) and (TO_INTEGER(signed(op)) < DATA_BITS)) else
+         acc_q(-1 - TO_INTEGER(signed(op))) when ((TO_INTEGER(signed(op)) < 0) and (TO_INTEGER(signed(op)) > -DATA_BITS)) else
          carryOut;
 
 with to_integer(unsigned(code)) select
@@ -90,7 +92,13 @@ with to_integer(unsigned(code)) select
                      op(0) when 7,          -- carrySet = op
                      carryOut when 3,
                      carryOut when 4,
-                     carryBorrow_q when others;
+                     carryBorrow_q when others;     --Mantiene el valor del carry
+
+--Para que el overflow mantenga el valor
+with to_integer(unsigned(code)) select
+    ov_d <= ov when 3,          
+            ov when 4,
+            ov_q when others;
 
 acc <= acc_q;
 carryBorrow <= carryBorrow_q;

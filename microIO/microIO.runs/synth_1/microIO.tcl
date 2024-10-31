@@ -88,6 +88,7 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 add_files {{C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/material/material/guia/capitulo17/test00.coe}}
+add_files {{C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/material/material/guia/capitulo17/test01.coe}}
 read_vhdl -library xil_defaultlib {
   {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/new/alu.vhd}
   {C:/Users/Casa/Desktop/Eli/Universidad/Tercer Nivel/Tecnicas Digitales I/eupstein/microIO/microIO.srcs/sources_1/imports/new/miniAlu.vhd}

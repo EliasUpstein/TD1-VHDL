@@ -36,6 +36,13 @@ signal aux : std_logic_vector (DATA_BITS-1 downto 0) := (others => '0');
 signal pos_S : std_logic_vector(DATA_BITS-1 downto 0):= ('0',others=>'1');
 signal neg_S : std_logic_vector(DATA_BITS-1 downto 0):= ('1',others=>'0');
 
+signal rot: std_logic_vector (DATA_BITS-1 downto 0) := (others => '0');
+signal rot_S: std_logic_vector ((3*DATA_BITS)-1+3 downto 0) := (others => '0');
+                                -- 3 veces el dato, +3 veces el carry
+
+signal rotA: std_logic_vector (DATA_BITS-1 downto 0) := (others => '0');
+signal rotB: std_logic_vector (DATA_BITS-1 downto 0) := (others => '0');
+
 begin
 
 --Señales auxiliares para la suma y resta
@@ -74,6 +81,16 @@ ResAnd <= a and b;
 ResOr <= a or b;
 ResXor <= a xor b;
 
+--Rotador (concatena el dato 3 veces con el carry adelante y desplaza)
+rot_S <= carryIn & a & carryIn & a & carryIn & a;
+rot <= rot_S(((2*DATA_BITS)-1)+1- TO_INTEGER(signed(b)) downto (DATA_BITS+1- TO_INTEGER(signed(b)))) when ((TO_INTEGER(signed(b)) > 0) and (TO_INTEGER(signed(b)) < DATA_BITS)) else
+       rot_S(((2*DATA_BITS)-1)+1+ TO_INTEGER(signed(not(b))+1) downto (DATA_BITS+1+ TO_INTEGER(signed(not(b))+1))) when ((TO_INTEGER(signed(b)) < 0) and (TO_INTEGER(signed(b)) > -DATA_BITS)) else
+       a;
+--
+--rotA <= rot_S(((2*DATA_BITS)-1)+1- TO_INTEGER(signed(b)) downto (DATA_BITS+1- TO_INTEGER(signed(b))));
+--rotB <= rot_S(((2*DATA_BITS)-1)+1+ TO_INTEGER(signed(b)) downto (DATA_BITS+1+ TO_INTEGER(signed(b))));
+--
+
 --Asignación de operación
 with to_integer(unsigned(code)) select
     resultado <= ResAnd when 0,
@@ -82,7 +99,7 @@ with to_integer(unsigned(code)) select
                  aux when 3,
                  aux when 4,
                  --
-                 a when 5,
+                 rot when 5,        -- (Carry, ACC) = (Carry, ACC) << op (Rotador)
                  b when 6,          -- ACC = op 
 --                 aux when 7,        -- carry = op(0)
 --                 aux when 8,        -- satSet = op

@@ -63,7 +63,7 @@ constant CONDN: std_logic_vector(3 downto 0) := "0011";
 constant JMP_0: std_logic_vector(3 downto 0) := "0100";
 
 --Máquina de estados
-type state_type is (selectOp, nextOp);
+type state_type is (selectOp, nextOp, waitPc);
 signal state, next_state : state_type;
 
 --Declaracion de signals
@@ -132,22 +132,22 @@ begin
                         when CONDZ =>
                              if (aluZero = '1') then
                                 pcPl <= '1';
-                                pcEna <= '1';
+--                                pcEna <= '1';
                             end if;
                         when CONDOV =>
                             if (aluOverflow = '1') then
                                 pcPl <= '1';
-                                pcEna <= '1';
+--                                pcEna <= '1';
                             end if;
                         when CONDCB =>
                             if (aluCarryBorrow = '1') then
                                 pcPl <= '1';
-                                pcEna <= '1';
+--                                pcEna <= '1';
                             end if;
                         when CONDN =>
                             if (aluNegative = '1') then
                                 pcPl <= '1';
-                                pcEna <= '1';
+--                                pcEna <= '1';
                             end if;
                         when JMP_0 =>
                             pcPl <= '1';
@@ -189,6 +189,9 @@ begin
             pcPl <= '0';
             --PC (para pedir siguiente instrucción)
             pcEna <= '1';
+        when waitPc =>
+            pcPl <= '0';
+            pcEna <= '0';
         when others =>
             pcEna <= '0';
     end case;
@@ -205,7 +208,11 @@ begin
                 when ALU =>
                     next_state <= nextOp;
                 when JMP =>
-                    next_state <= nextOp;
+                    if((opCode = CONDZ and aluZero = '1') or (opCode = CONDOV and aluOverflow = '1') or (opCode = CONDCB and aluCarryBorrow = '1') or (opCode = CONDN and aluNegative = '1') or opCode = JMP_0) then
+                        next_state <= waitPc;
+                    else
+                        next_state <= nextOp;
+                    end if;
                 when MOV =>
                     next_state <= nextOp;
                 when others =>
@@ -213,6 +220,8 @@ begin
             end case;
         when nextOp =>
             next_state <= selectOp;
+        when waitPc =>
+            next_state <= nextOp;
         when others =>
             next_state <= selectOp;
     end case;
