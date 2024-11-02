@@ -40,9 +40,6 @@ signal rot: std_logic_vector (DATA_BITS-1 downto 0) := (others => '0');
 signal rot_S: std_logic_vector ((3*DATA_BITS)-1+3 downto 0) := (others => '0');
                                 -- 3 veces el dato, +3 veces el carry
 
-signal rotA: std_logic_vector (DATA_BITS-1 downto 0) := (others => '0');
-signal rotB: std_logic_vector (DATA_BITS-1 downto 0) := (others => '0');
-
 begin
 
 --Señales auxiliares para la suma y resta
@@ -74,7 +71,7 @@ aux <= pos_S when ((sat = '1') and (ov_S = '1') and (a(DATA_BITS-1) = '0')) else
        neg_S when ((sat = '1') and (ov_S = '1') and (a(DATA_BITS-1) = '1')) else
        ResSuma(DATA_BITS downto 1) when (((sat = '0') or (ov_S = '0')) and (code = "0011")) else
        ResResta(DATA_BITS downto 1) when (((sat = '0') or (ov_S = '0')) and (code = "0100")) else
-       CTE_0; -- o resultado (a)? desición de diseño?
+       CTE_0;
 
 --And, Or y Xor
 ResAnd <= a and b;
@@ -83,13 +80,9 @@ ResXor <= a xor b;
 
 --Rotador (concatena el dato 3 veces con el carry adelante y desplaza)
 rot_S <= carryIn & a & carryIn & a & carryIn & a;
-rot <= rot_S(((2*DATA_BITS)-1)+1- TO_INTEGER(signed(b)) downto (DATA_BITS+1- TO_INTEGER(signed(b)))) when ((TO_INTEGER(signed(b)) > 0) and (TO_INTEGER(signed(b)) < DATA_BITS)) else
-       rot_S(((2*DATA_BITS)-1)+1+ TO_INTEGER(signed(not(b))+1) downto (DATA_BITS+1+ TO_INTEGER(signed(not(b))+1))) when ((TO_INTEGER(signed(b)) < 0) and (TO_INTEGER(signed(b)) > -DATA_BITS)) else
-       a;
---
---rotA <= rot_S(((2*DATA_BITS)-1)+1- TO_INTEGER(signed(b)) downto (DATA_BITS+1- TO_INTEGER(signed(b))));
---rotB <= rot_S(((2*DATA_BITS)-1)+1+ TO_INTEGER(signed(b)) downto (DATA_BITS+1+ TO_INTEGER(signed(b))));
---
+rot <= rot_S(((2*DATA_BITS)-1)+1- TO_INTEGER(signed(b)) downto (DATA_BITS+1- TO_INTEGER(signed(b)))) when
+       ((TO_INTEGER(signed(b)) < DATA_BITS) and (TO_INTEGER(signed(b)) > -DATA_BITS)) else a;
+            --Dentro del rango (-16;16). Cuando es negativo cambia el signo del desplazamiento
 
 --Asignación de operación
 with to_integer(unsigned(code)) select

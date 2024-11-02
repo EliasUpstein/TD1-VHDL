@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1724942379">
-  <File Type="PA-TCL" Name="companding_A.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="companding_A_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="companding_A_reports.tcl"/>
-  <File Type="RDS-RDS" Name="companding_A.vds"/>
-  <File Type="RDS-UTIL" Name="companding_A_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="companding_A_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="companding_A.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="companding_A_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="companding_A_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1730414645">
+  <File Type="PA-TCL" Name="detectorAuxilio.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="detectorAuxilio_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="detectorAuxilio_reports.tcl"/>
+  <File Type="RDS-RDS" Name="detectorAuxilio.vds"/>
+  <File Type="RDS-UTIL" Name="detectorAuxilio_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="detectorAuxilio_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="detectorAuxilio.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="detectorAuxilio_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="detectorAuxilio_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/new/detectorSecuencia.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../guia_10/guia_10.srcs/sources_1/new/detectorSecuencia.vhd"/>
+        <Attr Name="ImportTime" Val="1723727268"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/imports/new/myEdgeDetector.vhd">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../guia_10/guia_10.srcs/sources_1/new/myEdgeDetector.vhd"/>
@@ -19,7 +27,7 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/companding_A.vhd">
+    <File Path="$PSRCDIR/sources_1/new/detectorAuxilio.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -32,16 +40,7 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/new/detectorSecuencia.vhd">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="ImportPath" Val="$PPRDIR/../guia_10/guia_10.srcs/sources_1/new/detectorSecuencia.vhd"/>
-        <Attr Name="ImportTime" Val="1723727268"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/detectorAuxilio.vhd">
+    <File Path="$PSRCDIR/sources_1/new/companding_A.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -50,7 +49,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="companding_A"/>
+      <Option Name="TopModule" Val="detectorAuxilio"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
@@ -59,14 +58,13 @@
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../../drive-download-20240829T113723Z-001/companding_A.xdc"/>
         <Attr Name="ImportTime" Val="1721946525"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/constrs_1/imports/drive-download-20240829T113723Z-001/detectorAuxilio.xdc">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../../drive-download-20240829T113723Z-001/detectorAuxilio.xdc"/>
         <Attr Name="ImportTime" Val="1723763393"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
       </FileInfo>
     </File>
     <Config>

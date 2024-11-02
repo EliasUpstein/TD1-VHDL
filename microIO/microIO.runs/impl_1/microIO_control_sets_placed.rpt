@@ -1,0 +1,90 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
+| Date         : Sat Nov  2 13:27:39 2024
+| Host         : DESKTOP-IDPMHE5 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file microIO_control_sets_placed.rpt
+| Design       : microIO
+| Device       : xc7z010i
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    12 |
+|    Minimum number of control sets                        |    12 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    32 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    12 |
+| >= 0 to < 4        |     0 |
+| >= 4 to < 6        |     4 |
+| >= 6 to < 8        |     2 |
+| >= 8 to < 10       |     1 |
+| >= 10 to < 12      |     2 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |     3 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              10 |            6 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              20 |           10 |
+| Yes          | No                    | No                     |               8 |            2 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              74 |           24 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------+-----------------------------------------+--------------------------------------------------+------------------+----------------+--------------+
+|  Clock Signal  |              Enable Signal              |                 Set/Reset Signal                 | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+-----------------------------------------+--------------------------------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG | uartInst/Receptor/cntData/salidaM       | uartInst/Receptor/FSM_onehot_state_reg_n_0_[0]   |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG | uartInst/Transmisor/cntData/salidaM     | uartInst/Transmisor/FSM_onehot_state_reg_n_0_[0] |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | uartInst/Receptor/cntSimple/E[0]        | rst_IBUF                                         |                1 |              5 |         5.00 |
+|  clk_IBUF_BUFG | uartInst/Transmisor/cntSimple/E[0]      | rst_IBUF                                         |                1 |              5 |         5.00 |
+|  clk_IBUF_BUFG | uartInst/Receptor/cntData/enaCounts_S   | uartInst/Receptor/FSM_onehot_state_reg_n_0_[0]   |                1 |              7 |         7.00 |
+|  clk_IBUF_BUFG | uartInst/Transmisor/cntData/enaCounts_S | uartInst/Transmisor/FSM_onehot_state_reg_n_0_[0] |                2 |              7 |         3.50 |
+|  clk_IBUF_BUFG | uartInst/Transmisor/dataTxQ_S           |                                                  |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG |                                         |                                                  |                6 |             10 |         1.67 |
+|  clk_IBUF_BUFG | ucInst/state_reg_0                      | rst_IBUF                                         |                3 |             10 |         3.33 |
+|  clk_IBUF_BUFG | pcInst/state_reg                        | rst_IBUF                                         |                7 |             16 |         2.29 |
+|  clk_IBUF_BUFG | pcInst/E[0]                             | rst_IBUF                                         |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG |                                         | rst_IBUF                                         |               10 |             20 |         2.00 |
++----------------+-----------------------------------------+--------------------------------------------------+------------------+----------------+--------------+
+
+
